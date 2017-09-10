@@ -1,0 +1,53 @@
+# Created by .ignore support plugin (hsz.mobi)
+### C++ template
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+.idea/
+.vs/
+ALL_BUILD.vcxproj
+ALL_BUILD.vcxproj.filters
+Assignment1.dir/
+Assignment1.sln
+Assignment1.vcxproj
+Assignment1.vcxproj.filters
+Assignment1.vcxproj.user
+CMakeCache.txt
+CMakeFiles/
+Debug/
+Win32/
+ZERO_CHECK.vcxproj
+ZERO_CHECK.vcxproj.filters
+cmake-build-debug/
+cmake_install.cmake
+data/
