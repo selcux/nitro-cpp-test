@@ -6,10 +6,9 @@
 
 class OutputFormatter {
 public:
-	static std::string rectToString(Rect rect);
+    static std::string rectToString(Rect rect);
 
-	static std::string rectsToString(Rect* rects, int count);
+    static std::string rectsToString(Rect* rects, int count);
 };
-
 
 #endif //ASSIGNMENT1_OUTPUTFORMATTER_H
