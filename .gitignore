@@ -51,3 +51,6 @@ ZERO_CHECK.vcxproj.filters
 cmake-build-debug/
 cmake_install.cmake
 data/
+Assignment1.cbp
+Makefile
+CMakeSettings.json
