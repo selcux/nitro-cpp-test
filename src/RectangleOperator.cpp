@@ -49,4 +49,13 @@ int RectangleOperator::getRectCount() const
     return rect_count;
 }
 
+std::forward_list<Rect> RectangleOperator::getIntersections()
+{
+    std::forward_list<Rect> rectanglesList;
+    rectanglesList.push_front(*rects);
+
+
+    return rectanglesList;
+}
+
 

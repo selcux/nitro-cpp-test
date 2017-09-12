@@ -21,6 +21,8 @@ public:
 
     int getRectCount() const;
 
+    std::forward_list<Rect> getIntersections();
+
 private:
     Rect* rects;
     int rect_count;

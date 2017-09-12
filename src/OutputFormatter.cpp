@@ -23,3 +23,16 @@ std::string OutputFormatter::rectsToString(Rect* rects, int count)
 
     return string_builder.str();
 }
+
+std::string OutputFormatter::rectListToString(const std::forward_list<Rect> rectList)
+{
+    std::ostringstream string_builder;
+
+    string_builder << "Input:" << std::endl;
+
+    for (auto& rect : rectList) {
+        string_builder << rectToString(rect) << std::endl;
+    }
+
+    return string_builder.str();
+}

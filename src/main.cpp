@@ -29,6 +29,10 @@ int main(int argc, char** argv)
         std::cout << OutputFormatter::rectsToString(rectangle_operator.getRects(),
                 rectangle_operator.getRectCount())
                   << std::endl;
+
+        auto rectList = rectangle_operator.getIntersections();
+
+        std::cout << OutputFormatter::rectListToString(rectList) << std::endl;
     }
 
     return 0;
