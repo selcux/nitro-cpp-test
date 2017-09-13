@@ -4,7 +4,7 @@ std::string OutputFormatter::rectToString(Rect rect)
 {
     std::ostringstream string_builder;
 
-    string_builder << "Rectangle at (" << rect.x << ", "
+    string_builder << "(" << rect.x << ", "
                    << rect.y << "), w=" << rect.w << ", h="
                    << rect.h;
 
@@ -19,7 +19,7 @@ std::string OutputFormatter::rectsToString(std::list<Rect> rects)
 
     int i = 1;
     for (auto& rect : rects) {
-        string_builder << "      " << i << ": " << rectToString(rect) << std::endl;
+        string_builder << "      Rectangle at " << i++ << ": " << rectToString(rect) << std::endl;
     }
 
     return string_builder.str();
@@ -29,10 +29,27 @@ std::string OutputFormatter::rectListToString(const std::list<Intersection> inte
 {
     std::ostringstream string_builder;
 
-    string_builder << "Input:" << std::endl;
+    string_builder << "Intersections:" << std::endl;
 
     for (auto& intersect : intersectList) {
-        string_builder << rectToString(intersect.getRect()) << std::endl;
+        std::ostringstream rectangles_sb;
+        unsigned long indexCount = intersect.getIndicies().size();
+
+        for (int i = 0; i<indexCount-1; ++i) {
+            rectangles_sb << intersect.getIndicies()[i];
+
+            if (i-1<indexCount-1) {
+                rectangles_sb << " and ";
+            }
+            else {
+                rectangles_sb << ", ";
+            }
+        }
+
+        rectangles_sb << intersect.getIndicies()[indexCount-1];
+
+        string_builder << "      Between rectangle " << rectangles_sb.str()
+                       << " at " << rectToString(intersect.getRect()) << std::endl;
     }
 
     return string_builder.str();

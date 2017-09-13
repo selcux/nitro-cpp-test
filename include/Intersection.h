@@ -15,8 +15,6 @@ public:
 
     explicit Intersection(const Rect& rect, bool isIntersectRectangle = false);
 
-    void addIndex(int index);
-
     const Rect& getRect() const;
 
     void setRect(const Rect& rect);
@@ -24,6 +22,12 @@ public:
     bool intersectsWith(Rect otherRect, Rect& intersectionRect);
 
     bool overlaps(Rect otherRect);
+
+    const std::vector<int>& getIndicies() const;
+
+    void addIndex(int index);
+
+    void addIndex(const std::vector<int>& indexVector);
 
 private:
     std::vector<int> rectIndicies;

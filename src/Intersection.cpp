@@ -10,11 +10,6 @@ Intersection::Intersection(const Rect& rect)
 Intersection::Intersection(const Rect& rect, bool isIntersectRectangle)
         :rect(rect), isIntersectRectangle(isIntersectRectangle) { }
 
-void Intersection::addIndex(int index)
-{
-    rectIndicies.push_back(index);
-}
-
 const Rect& Intersection::getRect() const
 {
     return rect;
@@ -55,5 +50,20 @@ bool Intersection::overlaps(Rect otherRect)
             || isInRange(otherRect.y, rect.y, rect.y+rect.h);
 
     return xRange && yRange;
+}
+
+const std::vector<int>& Intersection::getIndicies() const
+{
+    return rectIndicies;
+}
+
+void Intersection::addIndex(int index)
+{
+    rectIndicies.emplace_back(index);
+}
+
+void Intersection::addIndex(const std::vector<int>& indexVector)
+{
+    rectIndicies.insert(rectIndicies.end(), indexVector.begin(), indexVector.end());
 }
 

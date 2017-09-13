@@ -43,23 +43,33 @@ void RectangleOperator::load(char* json_file_path)
 
 std::list<Intersection> RectangleOperator::getIntersections()
 {
-    std::list<Intersection> intersectList;
+    std::list<Intersection> rectanglesList;
+    std::list<Intersection> intersetcionList;
+    int index = 0;
     for (auto r : rects) {
-        intersectList.emplace_back(Intersection(r));
+        Intersection intersect(r);
+        intersect.addIndex(index);
+        rectanglesList.emplace_back(intersect);
+        ++index;
     }
 
-    int pivotIndex = 1;
+    while (!rectanglesList.empty()) {
+        auto& pivot = rectanglesList.front();
+        rectanglesList.pop_front();
 
-    while (!intersectList.empty()) {
-        auto pivot = intersectList.front();
-        intersectList.pop_front();
+        for (auto& rect : rectanglesList) {
+            Rect intercetionRect{};
+            if (pivot.intersectsWith(rect.getRect(), intercetionRect)) {
+                Intersection intersection(intercetionRect, true);
+                intersection.addIndex(pivot.getIndicies());
+                intersection.addIndex(rect.getIndicies());
 
-        for (auto& rect : intersectList) {
-
+                intersetcionList.emplace_back(intersection);
+            }
         }
     }
 
-    return intersectList;
+    return intersetcionList;
 }
 
 
