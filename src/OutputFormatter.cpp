@@ -11,27 +11,28 @@ std::string OutputFormatter::rectToString(Rect rect)
     return string_builder.str();
 }
 
-std::string OutputFormatter::rectsToString(Rect* rects, int count)
+std::string OutputFormatter::rectsToString(std::list<Rect> rects)
 {
     std::ostringstream string_builder;
 
     string_builder << "Input:" << std::endl;
 
-    for (int i = 0; i<count; ++i) {
-        string_builder << "      " << (i+1) << ": " << rectToString(rects[i]) << std::endl;
+    int i = 1;
+    for (auto& rect : rects) {
+        string_builder << "      " << i << ": " << rectToString(rect) << std::endl;
     }
 
     return string_builder.str();
 }
 
-std::string OutputFormatter::rectListToString(const std::forward_list<Rect> rectList)
+std::string OutputFormatter::rectListToString(const std::list<Intersection> intersectList)
 {
     std::ostringstream string_builder;
 
     string_builder << "Input:" << std::endl;
 
-    for (auto& rect : rectList) {
-        string_builder << rectToString(rect) << std::endl;
+    for (auto& intersect : intersectList) {
+        string_builder << rectToString(intersect.getRect()) << std::endl;
     }
 
     return string_builder.str();

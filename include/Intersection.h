@@ -7,9 +7,30 @@
 
 #include "Rect.h"
 
-struct Intersection : Rect {
+class Intersection {
+public:
+    Intersection();
+
+    //explicit Intersection(const Rect& rect);
+
+    explicit Intersection(const Rect& rect, bool isIntersectRectangle = false);
+
+    void addIndex(int index);
+
+    const Rect& getRect() const;
+
+    void setRect(const Rect& rect);
+
+    bool intersectsWith(Rect otherRect, Rect& intersectionRect);
+
+    bool overlaps(Rect otherRect);
+
+private:
     std::vector<int> rectIndicies;
-    Rect intersectPoint;
+    Rect rect;
+    bool isIntersectRectangle = false;
+
+    bool isInRange(int value, int min, int max);
 };
 
 #endif //ASSIGNMENT1_INTERSECTION_H

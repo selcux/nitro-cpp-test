@@ -1,9 +1,6 @@
 #include <iostream>
 #include <OutputFormatter.h>
 #include <RectangleOperator.h>
-#include "helpers.h"
-
-using json = nlohmann::json;
 
 int main(int argc, char** argv)
 {
@@ -26,8 +23,7 @@ int main(int argc, char** argv)
         RectangleOperator rectangle_operator;
         rectangle_operator.load(argv[1]);
 
-        std::cout << OutputFormatter::rectsToString(rectangle_operator.getRects(),
-                rectangle_operator.getRectCount())
+        std::cout << OutputFormatter::rectsToString(rectangle_operator.getRects())
                   << std::endl;
 
         auto rectList = rectangle_operator.getIntersections();

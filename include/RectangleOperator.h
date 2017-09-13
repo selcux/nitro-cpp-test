@@ -5,11 +5,13 @@
 #ifndef ASSIGNMENT1_RECTANGLEOPERATOR_H
 #define ASSIGNMENT1_RECTANGLEOPERATOR_H
 
+#include <list>
 #include "Rect.h"
-#include "json.hpp"
 #include "Intersection.h"
 
-using json = nlohmann::json;
+//#include "json.hpp"
+
+//using json = nlohmann::json;
 
 class RectangleOperator {
 public:
@@ -17,19 +19,16 @@ public:
 
     void load(char* json_file_path);
 
-    Rect* getRects() const;
+    std::list<Intersection> getIntersections();
 
-    int getRectCount() const;
-
-    std::forward_list<Rect> getIntersections();
+    const std::list<Rect>& getRects() const;
 
 private:
-    Rect* rects;
-    int rect_count;
+    std::list<Rect> rects;
 
     json readJsonFile(char* json_file_path);
 
-    Rect* getRectsFromJson(json rects_json);
+    const std::list<Rect> getRectsFromJson(json rects_json);
 };
 
 #endif //ASSIGNMENT1_RECTANGLEOPERATOR_H

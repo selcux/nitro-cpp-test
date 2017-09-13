@@ -3,6 +3,11 @@
 
 RectangleOperator::RectangleOperator() = default;
 
+const std::list<Rect>& RectangleOperator::getRects() const
+{
+    return rects;
+}
+
 json RectangleOperator::readJsonFile(char* json_file_path)
 {
     std::ifstream ifs(json_file_path);
@@ -19,15 +24,12 @@ json RectangleOperator::readJsonFile(char* json_file_path)
     return rects_json;
 }
 
-Rect* RectangleOperator::getRectsFromJson(json rects_json)
+const std::list<Rect> RectangleOperator::getRectsFromJson(json rects_json)
 {
     auto rects_json_array = rects_json["rects"];
-    rect_count = rects_json_array.size();
-    auto* rects = new Rect[rect_count];
-    int index = 0;
 
     for (auto& it : rects_json_array) {
-        rects[index++] = Rect(it);
+        rects.emplace_back(Rect(it));
     }
 
     return rects;
@@ -36,36 +38,28 @@ Rect* RectangleOperator::getRectsFromJson(json rects_json)
 void RectangleOperator::load(char* json_file_path)
 {
     const auto rect_json = readJsonFile(json_file_path);
-    this->rects = getRectsFromJson(rect_json);
+    getRectsFromJson(rect_json);
 }
 
-Rect* RectangleOperator::getRects() const
+std::list<Intersection> RectangleOperator::getIntersections()
 {
-    return rects;
-}
-
-int RectangleOperator::getRectCount() const
-{
-    return rect_count;
-}
-
-std::forward_list<Rect> RectangleOperator::getIntersections()
-{
-    std::forward_list<Rect> rectanglesList;
-    rectanglesList.push_front(*rects);
+    std::list<Intersection> intersectList;
+    for (auto r : rects) {
+        intersectList.emplace_back(Intersection(r));
+    }
 
     int pivotIndex = 1;
 
-    while (!rectanglesList.empty()) {
-        Rect pivot = rectanglesList.front();
-        rectanglesList.pop_front();
+    while (!intersectList.empty()) {
+        auto pivot = intersectList.front();
+        intersectList.pop_front();
 
-        for (auto& rect : rectanglesList) {
+        for (auto& rect : intersectList) {
 
         }
     }
 
-    return rectanglesList;
+    return intersectList;
 }
 
 
