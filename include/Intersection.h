@@ -7,8 +7,8 @@
 
 #include "Rect.h"
 
-struct Intersection {
-    int rect1, rect2;
+struct Intersection : Rect {
+    std::vector<int> rectIndicies;
     Rect intersectPoint;
 };
 

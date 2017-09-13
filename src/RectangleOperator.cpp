@@ -54,6 +54,16 @@ std::forward_list<Rect> RectangleOperator::getIntersections()
     std::forward_list<Rect> rectanglesList;
     rectanglesList.push_front(*rects);
 
+    int pivotIndex = 1;
+
+    while (!rectanglesList.empty()) {
+        Rect pivot = rectanglesList.front();
+        rectanglesList.pop_front();
+
+        for (auto& rect : rectanglesList) {
+
+        }
+    }
 
     return rectanglesList;
 }
