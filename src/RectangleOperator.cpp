@@ -59,15 +59,20 @@ std::list<Intersection> RectangleOperator::getIntersections()
         auto pivot = rectanglesList.front();
         rectanglesList.pop_front();
 
-        for (auto rect : rectanglesList) {
+        for (const auto& rect : rectanglesList) {
             Rect intercetionRect{};
             if (pivot.intersectsWith(rect.getRect(), intercetionRect)) {
                 Intersection intersection(intercetionRect, true);
                 intersection.addIndex(pivot.getIndicies());
                 intersection.addIndex(rect.getIndicies());
 
-                intersetcionList.emplace_back(intersection);
-                intersectionBuffer.emplace_back(intersection);
+                if (std::none_of(intersetcionList.begin(), intersetcionList.end(),
+                        [&](Intersection intrsct) {
+                            return intersection.getIndicies()==intrsct.getIndicies();
+                        })) {
+                    intersetcionList.emplace_back(intersection);
+                    intersectionBuffer.emplace_back(intersection);
+                }
             }
         }
 

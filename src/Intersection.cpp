@@ -53,18 +53,32 @@ bool Intersection::overlaps(Rect otherRect)
     return xRange && yRange;
 }
 
+/*
 const std::vector<int>& Intersection::getIndicies() const
 {
     return rectIndicies;
 }
+*/
 
 void Intersection::addIndex(int index)
 {
-    rectIndicies.emplace_back(index);
+    //rectIndicies.emplace_back(index);
+    rectIndicies.emplace(index);
 }
 
+/*
 void Intersection::addIndex(const std::vector<int>& indexVector)
 {
     rectIndicies.insert(rectIndicies.end(), indexVector.begin(), indexVector.end());
 }
+*/
 
+void Intersection::addIndex(const std::set<int>& indexSet)
+{
+    rectIndicies.insert(indexSet.begin(), indexSet.end());
+}
+
+const std::set<int>& Intersection::getIndicies() const
+{
+    return rectIndicies;
+}
