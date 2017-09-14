@@ -33,6 +33,7 @@ std::string OutputFormatter::rectListToString(const std::list<Intersection> inte
 
     for (auto& intersect : intersectList) {
         std::ostringstream rectangles_sb;
+/*
         unsigned long indexCount = intersect.getIndicies().size();
 
         for (int i = 0; i<indexCount-1; ++i) {
@@ -47,6 +48,10 @@ std::string OutputFormatter::rectListToString(const std::list<Intersection> inte
         }
 
         rectangles_sb << intersect.getIndicies()[indexCount-1];
+*/
+        for (int index : intersect.getIndicies()) {
+            rectangles_sb << index+1 << ", ";
+        }
 
         string_builder << "      Between rectangle " << rectangles_sb.str()
                        << " at " << rectToString(intersect.getRect()) << std::endl;

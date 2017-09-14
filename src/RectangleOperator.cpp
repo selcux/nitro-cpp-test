@@ -54,7 +54,7 @@ std::list<Intersection> RectangleOperator::getIntersections()
     }
 
     while (!rectanglesList.empty()) {
-        auto& pivot = rectanglesList.front();
+        auto pivot = rectanglesList.front();
         rectanglesList.pop_front();
 
         for (auto& rect : rectanglesList) {
