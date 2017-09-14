@@ -33,7 +33,7 @@ std::string OutputFormatter::rectListToString(const std::list<Intersection> inte
     string_builder << "Intersections:" << std::endl;
 
     for (auto& intersect : intersectList) {
-        string_builder << "      Between rectangle " << rectIndexToString(intersect.getIndicies())
+        string_builder << "      Between rectangle " << rectIndexToString(intersect.getIndices())
                        << " at " << rectToString(intersect.getRect()) << std::endl;
     }
 

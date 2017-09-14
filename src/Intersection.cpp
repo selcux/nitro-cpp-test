@@ -1,9 +1,7 @@
 #include "Intersection.h"
 
-Intersection::Intersection() = default;
-
-Intersection::Intersection(const Rect& rect, bool isIntersectRectangle)
-        :rect(rect), isIntersectRectangle(isIntersectRectangle) { }
+Intersection::Intersection(const Rect& rect)
+        :rect(rect) { }
 
 const Rect& Intersection::getRect() const
 {
@@ -15,12 +13,12 @@ bool Intersection::intersectsWith(Rect otherRect, Rect& intersectionRect)
     bool intersects = overlaps(otherRect);
 
     if (intersects) {
-        int x1 = std::max(rect.x, otherRect.x);
-        int y1 = std::max(rect.y, otherRect.y);
-        int x2 = std::min(rect.x+rect.w, otherRect.x+otherRect.w);
-        int y2 = std::min(rect.y+rect.h, otherRect.y+otherRect.h);
+        int left = std::max(rect.x, otherRect.x);
+        int top = std::max(rect.y, otherRect.y);
+        int right = std::min(rect.x+rect.w, otherRect.x+otherRect.w);
+        int bottom = std::min(rect.y+rect.h, otherRect.y+otherRect.h);
 
-        intersectionRect = Rect(x1, y1, (x2-x1), (y2-y1));
+        intersectionRect = Rect(left, top, (right-left), (bottom-top));
     }
 
     return intersects;
@@ -44,15 +42,15 @@ bool Intersection::overlaps(Rect otherRect)
 
 void Intersection::addIndex(int index)
 {
-    rectIndicies.emplace(index);
+    rectIndices.emplace(index);
 }
 
 void Intersection::addIndex(const std::set<int>& indexSet)
 {
-    rectIndicies.insert(indexSet.begin(), indexSet.end());
+    rectIndices.insert(indexSet.begin(), indexSet.end());
 }
 
-const std::set<int>& Intersection::getIndicies() const
+const std::set<int>& Intersection::getIndices() const
 {
-    return rectIndicies;
+    return rectIndices;
 }

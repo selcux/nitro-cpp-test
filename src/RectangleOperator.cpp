@@ -56,13 +56,13 @@ std::list<Intersection> RectangleOperator::getIntersections()
         for (const auto& rect : rectanglesList) {
             Rect intercetionRect{};
             if (pivot.intersectsWith(rect.getRect(), intercetionRect)) {
-                Intersection intersection(intercetionRect, true);
-                intersection.addIndex(pivot.getIndicies());
-                intersection.addIndex(rect.getIndicies());
+                Intersection intersection(intercetionRect);
+                intersection.addIndex(pivot.getIndices());
+                intersection.addIndex(rect.getIndices());
 
                 if (std::none_of(intersetcionList.begin(), intersetcionList.end(),
                         [&](Intersection intrsct) {
-                            return intersection.getIndicies()==intrsct.getIndicies();
+                            return intersection.getIndices()==intrsct.getIndices();
                         })) {
                     intersetcionList.emplace_back(intersection);
                     intersectionBuffer.emplace_back(intersection);

@@ -10,9 +10,7 @@
 
 class Intersection {
 public:
-    Intersection();
-
-    explicit Intersection(const Rect& rect, bool isIntersectRectangle = false);
+    explicit Intersection(const Rect& rect);
 
     const Rect& getRect() const;
 
@@ -20,16 +18,15 @@ public:
 
     bool overlaps(Rect otherRect);
 
-    const std::set<int>& getIndicies() const;
+    const std::set<int>& getIndices() const;
 
     void addIndex(int index);
 
     void addIndex(const std::set<int>& indexSet);
 
 private:
-    std::set<int> rectIndicies;
+    std::set<int> rectIndices;
     Rect rect;
-    bool isIntersectRectangle = false;
 
     bool isInRange(int value, int min, int max);
 };
