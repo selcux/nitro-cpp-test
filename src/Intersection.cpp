@@ -22,15 +22,15 @@ void Intersection::setRect(const Rect& rect)
 
 bool Intersection::intersectsWith(Rect otherRect, Rect& intersectionRect)
 {
-    int x1 = std::max(rect.x, otherRect.x);
-    int y1 = std::max(rect.y, otherRect.y);
-    int x2 = std::min(rect.x+rect.w, otherRect.x+otherRect.w);
-    int y2 = std::min(rect.y+rect.h, otherRect.y+otherRect.h);
-
-    bool intersects = (x1<x2) || (y1<y2);
-    //bool intersects = overlaps(otherRect);
+    //bool intersects = (x1<x2) || (y1<y2);
+    bool intersects = overlaps(otherRect);
 
     if (intersects) {
+        int x1 = std::max(rect.x, otherRect.x);
+        int y1 = std::max(rect.y, otherRect.y);
+        int x2 = std::min(rect.x+rect.w, otherRect.x+otherRect.w);
+        int y2 = std::min(rect.y+rect.h, otherRect.y+otherRect.h);
+
         intersectionRect = Rect(x1, y1, (x2-x1), (y2-y1));
     }
 
