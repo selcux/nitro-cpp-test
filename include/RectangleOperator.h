@@ -9,10 +9,6 @@
 #include "Rect.h"
 #include "Intersection.h"
 
-//#include "json.hpp"
-
-//using json = nlohmann::json;
-
 class RectangleOperator {
 public:
     RectangleOperator();

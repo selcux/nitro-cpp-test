@@ -12,28 +12,21 @@ class Intersection {
 public:
     Intersection();
 
-    //explicit Intersection(const Rect& rect);
-
     explicit Intersection(const Rect& rect, bool isIntersectRectangle = false);
 
     const Rect& getRect() const;
-
-    void setRect(const Rect& rect);
 
     bool intersectsWith(Rect otherRect, Rect& intersectionRect);
 
     bool overlaps(Rect otherRect);
 
-    //const std::vector<int>& getIndicies() const;
     const std::set<int>& getIndicies() const;
 
     void addIndex(int index);
 
-    //void addIndex(const std::vector<int>& indexVector);
     void addIndex(const std::set<int>& indexSet);
 
 private:
-    //std::vector<int> rectIndicies;
     std::set<int> rectIndicies;
     Rect rect;
     bool isIntersectRectangle = false;

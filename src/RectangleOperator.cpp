@@ -11,13 +11,7 @@ const std::list<Rect>& RectangleOperator::getRects() const
 json RectangleOperator::readJsonFile(char* json_file_path)
 {
     std::ifstream ifs(json_file_path);
-    /*
-        std::string content((std::istreambuf_iterator<char>(ifs)),
-                            std::istreambuf_iterator<char>());
 
-        auto cstr = content.c_str();
-        json rects_json = json::parse(cstr);
-    */
     json rects_json;
     ifs >> rects_json;
 

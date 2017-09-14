@@ -1,3 +1,4 @@
+#include <queue>
 #include "OutputFormatter.h"
 
 std::string OutputFormatter::rectToString(Rect rect)
@@ -32,30 +33,33 @@ std::string OutputFormatter::rectListToString(const std::list<Intersection> inte
     string_builder << "Intersections:" << std::endl;
 
     for (auto& intersect : intersectList) {
-        std::ostringstream rectangles_sb;
-/*
-        unsigned long indexCount = intersect.getIndicies().size();
-
-        for (int i = 0; i<indexCount-1; ++i) {
-            rectangles_sb << intersect.getIndicies()[i];
-
-            if (i-1<indexCount-1) {
-                rectangles_sb << " and ";
-            }
-            else {
-                rectangles_sb << ", ";
-            }
-        }
-
-        rectangles_sb << intersect.getIndicies()[indexCount-1];
-*/
-        for (int index : intersect.getIndicies()) {
-            rectangles_sb << index+1 << ", ";
-        }
-
-        string_builder << "      Between rectangle " << rectangles_sb.str()
+        string_builder << "      Between rectangle " << rectIndexToString(intersect.getIndicies())
                        << " at " << rectToString(intersect.getRect()) << std::endl;
     }
 
     return string_builder.str();
+}
+
+std::string OutputFormatter::rectIndexToString(const std::set<int>& indexSet)
+{
+    std::list<int> indexList;
+    std::ostringstream rectangles_sb;
+
+    indexList.insert(indexList.end(), indexSet.begin(), indexSet.end());
+
+    while (!indexList.empty()) {
+        int index = indexList.front();
+        indexList.pop_front();
+
+        rectangles_sb << (index+1);
+
+        if (indexList.size()>1) {
+            rectangles_sb << ", ";
+        }
+        else if (indexList.size()==1) {
+            rectangles_sb << " and ";
+        }
+    }
+
+    return rectangles_sb.str();
 }

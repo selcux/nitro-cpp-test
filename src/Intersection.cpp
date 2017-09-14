@@ -2,11 +2,6 @@
 
 Intersection::Intersection() = default;
 
-/*
-Intersection::Intersection(const Rect& rect)
-        :rect(rect) { }
-*/
-
 Intersection::Intersection(const Rect& rect, bool isIntersectRectangle)
         :rect(rect), isIntersectRectangle(isIntersectRectangle) { }
 
@@ -15,14 +10,8 @@ const Rect& Intersection::getRect() const
     return rect;
 }
 
-void Intersection::setRect(const Rect& rect)
-{
-    Intersection::rect = rect;
-}
-
 bool Intersection::intersectsWith(Rect otherRect, Rect& intersectionRect)
 {
-    //bool intersects = (x1<x2) || (y1<y2);
     bool intersects = overlaps(otherRect);
 
     if (intersects) {
@@ -53,25 +42,10 @@ bool Intersection::overlaps(Rect otherRect)
     return xRange && yRange;
 }
 
-/*
-const std::vector<int>& Intersection::getIndicies() const
-{
-    return rectIndicies;
-}
-*/
-
 void Intersection::addIndex(int index)
 {
-    //rectIndicies.emplace_back(index);
     rectIndicies.emplace(index);
 }
-
-/*
-void Intersection::addIndex(const std::vector<int>& indexVector)
-{
-    rectIndicies.insert(rectIndicies.end(), indexVector.begin(), indexVector.end());
-}
-*/
 
 void Intersection::addIndex(const std::set<int>& indexSet)
 {

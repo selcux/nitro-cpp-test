@@ -4,21 +4,6 @@
 
 int main(int argc, char** argv)
 {
-    /*
-        std::cout << argc << std::endl;
-
-        if (argc > 1) {
-            auto json_content = read_json(argv[1]);
-            std::ifstream json_file(argv[1]);
-            json j;
-            json_file >> j;
-            Rect r(j);
-
-            std::cout << OutputFormatter::rectToString(r) << std::endl;
-        } else {
-            std::cout << "Hello, World!" << std::endl;
-        }
-    */
     if (argc>1) {
         RectangleOperator rectangle_operator;
         rectangle_operator.load(argv[1]);
@@ -29,6 +14,9 @@ int main(int argc, char** argv)
         auto rectList = rectangle_operator.getIntersections();
 
         std::cout << OutputFormatter::rectListToString(rectList) << std::endl;
+    }
+    else {
+        std::cout << "The program must have a json file path as parameter." << std::endl;
     }
 
     return 0;
