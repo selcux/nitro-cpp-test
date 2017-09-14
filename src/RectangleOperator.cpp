@@ -45,6 +45,8 @@ std::list<Intersection> RectangleOperator::getIntersections()
 {
     std::list<Intersection> rectanglesList;
     std::list<Intersection> intersetcionList;
+    std::list<Intersection> intersectionBuffer;
+
     int index = 0;
     for (auto r : rects) {
         Intersection intersect(r);
@@ -57,7 +59,7 @@ std::list<Intersection> RectangleOperator::getIntersections()
         auto pivot = rectanglesList.front();
         rectanglesList.pop_front();
 
-        for (auto& rect : rectanglesList) {
+        for (auto rect : rectanglesList) {
             Rect intercetionRect{};
             if (pivot.intersectsWith(rect.getRect(), intercetionRect)) {
                 Intersection intersection(intercetionRect, true);
@@ -65,7 +67,14 @@ std::list<Intersection> RectangleOperator::getIntersections()
                 intersection.addIndex(rect.getIndicies());
 
                 intersetcionList.emplace_back(intersection);
+                intersectionBuffer.emplace_back(intersection);
             }
+        }
+
+        if (!intersectionBuffer.empty()) {
+            rectanglesList.insert(rectanglesList.end(),
+                    intersectionBuffer.begin(), intersectionBuffer.end());
+            intersectionBuffer.clear();
         }
     }
 
