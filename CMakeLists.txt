@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(Assignment1)
+project(NitroPdfAssignment)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -8,10 +8,10 @@ include_directories(include lib)
 set(SOURCE_FILES include/Rect.h src/RectangleOperator.cpp include/RectangleOperator.h src/OutputFormatter.cpp include/OutputFormatter.h include/Intersection.h src/Intersection.cpp)
 
 set(RUNTIME_FILES ${SOURCE_FILES} src/main.cpp)
-add_executable(Assignment1 ${RUNTIME_FILES})
+add_executable(NitroPdfAssignment ${RUNTIME_FILES})
 
 set(TEST_FILES ${SOURCE_FILES} tests/test-main.cpp tests/test-rect.cpp tests/test-intersection.cpp tests/test-output-formatter.cpp)
-add_executable(Test ${TEST_FILES})
+add_executable(AssignmentTest ${TEST_FILES})
 
 #[[
 enable_testing()
