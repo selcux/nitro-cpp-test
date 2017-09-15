@@ -16,5 +16,5 @@ add_executable(Test ${TEST_FILES})
 #[[
 enable_testing()
 add_test(NAME assignment-test
-        COMMAND Test1.exe)
+        COMMAND Test1)
 ]]
