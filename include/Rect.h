@@ -18,6 +18,11 @@ struct Rect {
             :x(j["x"]), y(j["y"]), w(j["w"]), h(j["h"])
     {
     }
+
+    bool operator==(const Rect& rect)
+    {
+        return x==rect.x && y==rect.y && w==rect.w && h==rect.h;
+    }
 };
 
 #endif //ASSIGNMENT1_RECT_H
