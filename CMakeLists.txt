@@ -10,7 +10,7 @@ set(SOURCE_FILES include/Rect.h src/RectangleOperator.cpp include/RectangleOpera
 set(RUNTIME_FILES ${SOURCE_FILES} src/main.cpp)
 add_executable(Assignment1 ${RUNTIME_FILES})
 
-set(TEST_FILES ${SOURCE_FILES} tests/test-main.cpp tests/test-rect.cpp tests/test-intersection.cpp)
+set(TEST_FILES ${SOURCE_FILES} tests/test-main.cpp tests/test-rect.cpp tests/test-intersection.cpp tests/test-output-formatter.cpp)
 add_executable(Test ${TEST_FILES})
 
 #[[
