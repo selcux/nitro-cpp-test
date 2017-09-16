@@ -15,4 +15,8 @@ add_executable(NitroPdfAssignment ${RUNTIME_FILES})
 set(TEST_FILES ${SOURCE_FILES} tests/test-main.cpp tests/test-rect.cpp tests/test-intersection.cpp tests/test-output-formatter.cpp tests/test-rectangle-operator.cpp)
 add_executable(AssignmentTest ${TEST_FILES})
 
-#add_test(NAME test-assignment COMMAND AssignmentTest)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/tests/data DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/)
+
+set_target_properties(AssignmentTest PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+
+
