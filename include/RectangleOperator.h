@@ -1,7 +1,3 @@
-//
-// Created by selcu on 10.09.2017.
-//
-
 #ifndef ASSIGNMENT1_RECTANGLEOPERATOR_H
 #define ASSIGNMENT1_RECTANGLEOPERATOR_H
 

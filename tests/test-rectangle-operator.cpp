@@ -1,4 +1,3 @@
-#include <iostream>
 #include "catch.hpp"
 
 #include "test.h"
@@ -14,13 +13,13 @@ SCENARIO("Rectangle operator can get and process input of rectangles", "[rectang
             REQUIRE_NOTHROW(rectangleOperator.load(filePath));
         }
 
-        WHEN("input is NULL") {
+        WHEN("input is empty") {
             RectangleOperator rectangleOperator;
 
-            REQUIRE_THROWS(rectangleOperator.load(nullptr));
+            REQUIRE_THROWS(rectangleOperator.load(""));
         }
 
-        WHEN("input is empty") {
+        WHEN("input content is empty") {
             auto filePath = testDataDir+"/test_sample2.json";
             RectangleOperator rectangleOperator;
 
