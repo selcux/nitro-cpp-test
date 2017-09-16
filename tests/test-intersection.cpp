@@ -62,7 +62,7 @@ SCENARIO("Intersection can use rectangles to check if they overlap or not", "[in
             }
         }
 
-        GIVEN("a rectangle NOT to intersect") {
+        GIVEN("a rectangle does NOT to intersect") {
             Rect otherRect(0, 0, 80, 50);
 
             WHEN("does not overlap with the rectangle") {

@@ -6,7 +6,7 @@ SCENARIO("Rectangle operator can get and process input of rectangles", "[rectang
 {
     GIVEN("JSON file") {
         WHEN("input is valid") {
-            char filePath[] = "test_sample1.json";
+            char filePath[] = "tests/data/test_sample1.json";
             RectangleOperator rectangleOperator;
 
             REQUIRE_NOTHROW(rectangleOperator.load(filePath));
@@ -19,14 +19,14 @@ SCENARIO("Rectangle operator can get and process input of rectangles", "[rectang
         }
 
         WHEN("input is empty") {
-            char filePath[] = "test_sample2.json";
+            char filePath[] = "tests/data/test_sample2.json";
             RectangleOperator rectangleOperator;
 
             REQUIRE_THROWS(rectangleOperator.load(filePath));
         }
 
         WHEN("input is invalid") {
-            char filePath[] = "test_sample3.json";
+            char filePath[] = "tests/data/test_sample3.json";
             RectangleOperator rectangleOperator;
 
             REQUIRE_THROWS(rectangleOperator.load(filePath));
@@ -34,7 +34,7 @@ SCENARIO("Rectangle operator can get and process input of rectangles", "[rectang
     }
 
     GIVEN("a valid input") {
-        char filePath[] = "test_sample1.json";
+        char filePath[] = "tests/data/test_sample1.json";
         RectangleOperator rectangleOperator;
 
         rectangleOperator.load(filePath);
@@ -61,7 +61,27 @@ SCENARIO("Rectangle operator can get and process input of rectangles", "[rectang
         WHEN("rectangles intersect") {
             std::list<Intersection> intersections = rectangleOperator.getIntersections();
 
+            Intersection i1(Rect(140, 160, 210, 20), {0, 2});
+            Intersection i2(Rect(160, 140, 190, 40), {0, 3});
+            Intersection i3(Rect(140, 200, 230, 60), {1, 2});
+            Intersection i4(Rect(160, 200, 210, 130), {1, 3});
+            Intersection i5(Rect(160, 160, 230, 100), {2, 3});
+            Intersection i6(Rect(160, 160, 190, 20), {0, 2, 3});
+            Intersection i7(Rect(160, 200, 210, 60), {1, 2, 3});
 
+            std::list<Intersection> expectedIntersections = {i1, i2, i3, i4, i5, i6, i7};
+
+            for (auto& intersect : intersections) {
+                REQUIRE(std::any_of(expectedIntersections.begin(),
+                        expectedIntersections.end(),
+                        [&](Intersection expected) {
+                            Rect expRect = expected.getRect();
+                            Rect intersectRect = intersect.getRect();
+
+                            return (expected.getIndices()==intersect.getIndices()) &&
+                                    (expRect==intersectRect);
+                        }));
+            }
         }
     }
 }

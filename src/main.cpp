@@ -5,13 +5,13 @@
 int main(int argc, char** argv)
 {
     if (argc>1) {
-        RectangleOperator rectangle_operator;
-        rectangle_operator.load(argv[1]);
+        RectangleOperator rectangleOperator;
+        rectangleOperator.load(argv[1]);
 
-        std::cout << OutputFormatter::rectsToString(rectangle_operator.getRects())
+        std::cout << OutputFormatter::rectsToString(rectangleOperator.getRects())
                   << std::endl;
 
-        auto rectList = rectangle_operator.getIntersections();
+        auto rectList = rectangleOperator.getIntersections();
 
         std::cout << OutputFormatter::rectListToString(rectList) << std::endl;
     }

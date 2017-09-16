@@ -10,11 +10,9 @@ set(SOURCE_FILES include/Rect.h src/RectangleOperator.cpp include/RectangleOpera
 set(RUNTIME_FILES ${SOURCE_FILES} src/main.cpp)
 add_executable(NitroPdfAssignment ${RUNTIME_FILES})
 
+#enable_testing()
+
 set(TEST_FILES ${SOURCE_FILES} tests/test-main.cpp tests/test-rect.cpp tests/test-intersection.cpp tests/test-output-formatter.cpp tests/test-rectangle-operator.cpp)
 add_executable(AssignmentTest ${TEST_FILES})
 
-#[[
-enable_testing()
-add_test(NAME assignment-test
-        COMMAND Test1)
-]]
+#add_test(NAME test-assignment COMMAND AssignmentTest)

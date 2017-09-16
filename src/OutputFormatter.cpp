@@ -3,47 +3,47 @@
 
 std::string OutputFormatter::rectToString(Rect rect)
 {
-    std::ostringstream string_builder;
+    std::ostringstream stringBuilder;
 
-    string_builder << "(" << rect.x << ", "
-                   << rect.y << "), w=" << rect.w << ", h="
-                   << rect.h;
+    stringBuilder << "(" << rect.x << ", "
+                  << rect.y << "), w=" << rect.w << ", h="
+                  << rect.h;
 
-    return string_builder.str();
+    return stringBuilder.str();
 }
 
 std::string OutputFormatter::rectsToString(std::list<Rect> rects)
 {
-    std::ostringstream string_builder;
+    std::ostringstream stringBuilder;
 
-    string_builder << "Input:" << std::endl;
+    stringBuilder << "Input:" << std::endl;
 
     int i = 1;
     for (auto& rect : rects) {
-        string_builder << "      Rectangle at " << i++ << ": " << rectToString(rect) << std::endl;
+        stringBuilder << "      Rectangle at " << i++ << ": " << rectToString(rect) << std::endl;
     }
 
-    return string_builder.str();
+    return stringBuilder.str();
 }
 
 std::string OutputFormatter::rectListToString(const std::list<Intersection> intersectList)
 {
-    std::ostringstream string_builder;
+    std::ostringstream stringBuilder;
 
-    string_builder << "Intersections:" << std::endl;
+    stringBuilder << "Intersections:" << std::endl;
 
     for (auto& intersect : intersectList) {
-        string_builder << "      Between rectangle " << rectIndexToString(intersect.getIndices())
-                       << " at " << rectToString(intersect.getRect()) << std::endl;
+        stringBuilder << "      Between rectangle " << rectIndexToString(intersect.getIndices())
+                      << " at " << rectToString(intersect.getRect()) << std::endl;
     }
 
-    return string_builder.str();
+    return stringBuilder.str();
 }
 
 std::string OutputFormatter::rectIndexToString(const std::set<int>& indexSet)
 {
     std::list<int> indexList;
-    std::ostringstream rectangles_sb;
+    std::ostringstream rectanglesSb;
 
     indexList.insert(indexList.end(), indexSet.begin(), indexSet.end());
 
@@ -51,15 +51,15 @@ std::string OutputFormatter::rectIndexToString(const std::set<int>& indexSet)
         int index = indexList.front();
         indexList.pop_front();
 
-        rectangles_sb << (index+1);
+        rectanglesSb << (index+1);
 
         if (indexList.size()>1) {
-            rectangles_sb << ", ";
+            rectanglesSb << ", ";
         }
         else if (indexList.size()==1) {
-            rectangles_sb << " and ";
+            rectanglesSb << " and ";
         }
     }
 
-    return rectangles_sb.str();
+    return rectanglesSb.str();
 }

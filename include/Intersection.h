@@ -12,6 +12,8 @@ class Intersection {
 public:
     explicit Intersection(const Rect& rect);
 
+    Intersection(const Rect& rect, const std::set<int>& indices);
+
     const Rect& getRect() const;
 
     bool intersectsWith(Rect otherRect, Rect& intersectionRect);

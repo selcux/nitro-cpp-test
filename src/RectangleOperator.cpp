@@ -8,31 +8,31 @@ const std::list<Rect>& RectangleOperator::getRects() const
     return rects;
 }
 
-json RectangleOperator::readJsonFile(char* json_file_path)
+json RectangleOperator::readJsonFile(char* jsonFilePath)
 {
-    std::ifstream ifs(json_file_path);
+    std::ifstream ifs(jsonFilePath);
 
-    json rects_json;
-    ifs >> rects_json;
+    json rectsJson;
+    ifs >> rectsJson;
 
-    return rects_json;
+    return rectsJson;
 }
 
-const std::list<Rect> RectangleOperator::getRectsFromJson(json rects_json)
+const std::list<Rect> RectangleOperator::getRectsFromJson(json rectsJson)
 {
-    auto rects_json_array = rects_json["rects"];
+    auto rectsJsonArray = rectsJson["rects"];
 
-    for (auto& it : rects_json_array) {
+    for (auto& it : rectsJsonArray) {
         rects.emplace_back(Rect(it));
     }
 
     return rects;
 }
 
-void RectangleOperator::load(char* json_file_path)
+void RectangleOperator::load(char* jsonFilePath)
 {
-    const auto rect_json = readJsonFile(json_file_path);
-    getRectsFromJson(rect_json);
+    const auto rectJson = readJsonFile(jsonFilePath);
+    getRectsFromJson(rectJson);
 }
 
 std::list<Intersection> RectangleOperator::getIntersections()

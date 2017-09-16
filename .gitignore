@@ -35,22 +35,7 @@
 
 .idea/
 .vs/
-ALL_BUILD.vcxproj
-ALL_BUILD.vcxproj.filters
-Assignment1.dir/
-Assignment1.sln
-Assignment1.vcxproj
-Assignment1.vcxproj.filters
-Assignment1.vcxproj.user
-CMakeCache.txt
-CMakeFiles/
-Debug/
-Win32/
-ZERO_CHECK.vcxproj
-ZERO_CHECK.vcxproj.filters
 cmake-build-debug/
 cmake_install.cmake
-data/
-Assignment1.cbp
-Makefile
-CMakeSettings.json
+/data
+Testing/

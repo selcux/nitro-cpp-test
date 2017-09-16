@@ -3,6 +3,9 @@
 Intersection::Intersection(const Rect& rect)
         :rect(rect) { }
 
+Intersection::Intersection(const Rect& rect, const std::set<int>& indices)
+        :rectIndices(indices), rect(rect) { }
+
 const Rect& Intersection::getRect() const
 {
     return rect;
@@ -54,3 +57,4 @@ const std::set<int>& Intersection::getIndices() const
 {
     return rectIndices;
 }
+
