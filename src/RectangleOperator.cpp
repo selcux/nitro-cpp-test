@@ -32,6 +32,10 @@ const std::list<Rect> RectangleOperator::getRectsFromJson(json rectsJson)
 
 void RectangleOperator::load(const std::string& jsonFilePath)
 {
+    if (&jsonFilePath==nullptr) {
+        throw std::invalid_argument("NULL file path");
+    }
+
     const auto rectJson = readJsonFile(jsonFilePath);
     getRectsFromJson(rectJson);
 }
