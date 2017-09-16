@@ -9,7 +9,6 @@ SCENARIO("Rectangle operator can get and process input of rectangles", "[rectang
     GIVEN("JSON file") {
         WHEN("input is valid") {
             auto filePath = testDataDir+"/test_sample1.json";
-            std::cout << filePath << std::endl;
             RectangleOperator rectangleOperator;
 
             REQUIRE_NOTHROW(rectangleOperator.load(filePath));

@@ -2,7 +2,7 @@
 #include <OutputFormatter.h>
 #include <RectangleOperator.h>
 
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
     if (argc>1) {
         try {

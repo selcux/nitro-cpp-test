@@ -5,6 +5,6 @@
 #ifndef NITROPDFASSIGNMENT_TEST_H
 #define NITROPDFASSIGNMENT_TEST_H
 
-static std::string testDataDir;
+extern std::string testDataDir;
 
 #endif //NITROPDFASSIGNMENT_TEST_H
