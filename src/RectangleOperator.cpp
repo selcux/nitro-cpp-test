@@ -1,4 +1,5 @@
 #include <fstream>
+#include <utility>
 #include "RectangleOperator.h"
 
 RectangleOperator::RectangleOperator() = default;
@@ -8,7 +9,7 @@ const std::list<Rect>& RectangleOperator::getRects() const
     return rects;
 }
 
-json RectangleOperator::readJsonFile(char* jsonFilePath)
+json RectangleOperator::readJsonFile(const std::string& jsonFilePath)
 {
     std::ifstream ifs(jsonFilePath);
 
@@ -29,7 +30,7 @@ const std::list<Rect> RectangleOperator::getRectsFromJson(json rectsJson)
     return rects;
 }
 
-void RectangleOperator::load(char* jsonFilePath)
+void RectangleOperator::load(const std::string& jsonFilePath)
 {
     const auto rectJson = readJsonFile(jsonFilePath);
     getRectsFromJson(rectJson);

@@ -13,7 +13,7 @@ class RectangleOperator {
 public:
     RectangleOperator();
 
-    void load(char* jsonFilePath);
+    void load(const std::string& jsonFilePath);
 
     std::list<Intersection> getIntersections();
 
@@ -22,7 +22,7 @@ public:
 private:
     std::list<Rect> rects;
 
-    json readJsonFile(char* jsonFilePath);
+    json readJsonFile(const std::string& jsonFilePath);
 
     const std::list<Rect> getRectsFromJson(json rectsJson);
 };
