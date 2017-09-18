@@ -119,4 +119,9 @@ The code is expected to compile and run without any problems on those platforms.
 The unit testing library generates another executable file named _AssignmentTest_.
 It takes the test data directory path as a single argument. The directory is in the _{assignmet folder}/tests/data_.
 
+Example usage.
+```
+..\build> ./AssignmentTest ../tests/data
+```
+
 The testing files are not integrated to CMake testing system.
