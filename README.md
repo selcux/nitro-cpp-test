@@ -64,7 +64,7 @@ Since Linux and Mac have similar development environments, the code can be built
 
 Visual Studio 2017 directly supports CMake projects. By opening the assignment folder the project will be ready to compile and run.
 
-For older versions of Visual Studio, the solution files can be generated on the [command line](#windows)
+For older versions of Visual Studio, the solution files can be generated on the [command line](#markdown-header-windows)
 
 #### JetBrains CLion
 
