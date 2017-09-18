@@ -125,3 +125,6 @@ Example usage:
 ```
 
 The testing files are not integrated to CMake testing system.
+
+**P.S.:** After completing the assignment, I just realized that the algorithm is very inefficient for large number of rectangles.
+The domain of the problem is a computational geometry field which requires a solution like sweep-line algorithm.
